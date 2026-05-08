@@ -1,1 +1,94 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #121212; /* Fundo escuro estilo terminal/moderno */
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
 
+.container {
+    text-align: center;
+    width: 90%;
+}
+
+h1 {
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: #f1c40f; /* Cor amarela para remeter a cerveja/alerta técnico */
+}
+
+.selection-box {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+}
+
+.btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 180px;
+    text-decoration: none;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.icon {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+/* Cores específicas para cada lado */
+.academic {
+    background-color: #1e272e;
+}
+
+.academic:hover {
+    background-color: #2f3640;
+    border-color: #3498db;
+    transform: translateY(-5px);
+}
+
+.commercial {
+    background-color: #d35400;
+}
+
+.commercial:hover {
+    background-color: #e67e22;
+    border-color: #f1c40f;
+    transform: translateY(-5px);
+}
+
+.btn span {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: white;
+}
+
+.btn small {
+    margin-top: 12px;
+    color: #dcdde1;
+    font-size: 0.9rem;
+    padding: 0 10px;
+}
+
+/* Ajuste para celular */
+@media (max-width: 650px) {
+    .selection-box {
+        flex-direction: column;
+        align-items: center;
+    }
+    .btn {
+        width: 100%;
+        max-width: 300px;
+    }
+}
