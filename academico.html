@@ -2,16 +2,77 @@
 <html lang="pt-br"> 
 <head> 
     <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalhes Técnicos - Engenharia</title> 
     <link rel="stylesheet" href="style.css"> 
     <style> 
-        /* Estilo rápido para a página de conteúdo */ 
-        body { display: block; padding: 40px; height: auto; text-align: left; background-color: #121212; color: #fff; } 
-        .back-link { color: #f1c40f; text-decoration: none; display: block; margin-bottom: 20px; font-weight: bold; } 
-        pre { background: #1a1a1a; padding: 15px; border-radius: 5px; color: #00ff00; border: 1px solid #333; overflow-x: auto; } 
-        section { margin-bottom: 40px; border-bottom: 1px solid #333; padding-bottom: 20px; }
-        h2 { color: #f1c40f; }
+        /* Estilo para a página de conteúdo técnico */ 
+        body { 
+            display: block; 
+            padding: 40px; 
+            height: auto; 
+            text-align: left; 
+            background-color: #121212; 
+            color: #fff; 
+            max-width: 900px;
+            margin: 0 auto;
+        } 
+        
+        .back-link { 
+            color: #f1c40f; 
+            text-decoration: none; 
+            display: block; 
+            margin-bottom: 20px; 
+            font-weight: bold; 
+            transition: 0.3s;
+        } 
+        
+        .back-link:hover { color: #fff; }
+
+        section { 
+            margin-bottom: 50px; 
+            border-bottom: 1px solid #333; 
+            padding-bottom: 30px; 
+        }
+
+        h1, h2 { color: #f1c40f; }
         .highlight { color: #3498db; font-weight: bold; }
+
+        pre { 
+            background: #1a1a1a; 
+            padding: 15px; 
+            border-radius: 5px; 
+            color: #00ff00; 
+            border: 1px solid #333; 
+            overflow-x: auto;
+            font-family: 'Consolas', monospace;
+        } 
+
+        /* Estilização das Imagens */
+        .img-wrapper {
+            margin: 25px 0;
+            text-align: center;
+        }
+
+        .img-tecnica {
+            max-width: 100%;
+            height: auto;
+            border: 2px solid #333;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+
+        .legenda {
+            display: block;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: #aaa;
+            font-style: italic;
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 20px; }
+        }
     </style> 
 </head> 
 <body> 
@@ -26,16 +87,22 @@
             Utilizamos um microcontrolador <span class="highlight">ESP32</span> para realizar a leitura constante da temperatura da cerveja 
             durante as etapas críticas de produção.
         </p>
+
+        <div class="img-wrapper">
+            <img src="foto1.jpg" alt="Montagem do ESP32 e Sensores" class="img-tecnica">
+            <span class="legenda">Figura 1: Protótipo eletrônico utilizando ESP32 e sensor DS18B20.</span>
+        </div>
+
         <p>
-            Os dados coletados pelo sensor são enviados via Wi-Fi para uma planilha automatizada (ou banco de dados), 
+            Os dados coletados pelo sensor são enviados via Wi-Fi para uma planilha automatizada, 
             permitindo o registro histórico e a análise do comportamento térmico do lote em tempo real. 
-            Isso garante a repetibilidade do processo e o controle de qualidade rigoroso exigido na produção industrial.
+            Isso garante a repetibilidade do processo e o controle de qualidade rigoroso.
         </p>
     </section>
 
     <section> 
-        <h2>Automação com ESP32</h2> 
-        <p>Abaixo, o trecho de código responsável pela captura da temperatura através do sensor digital DS18B20:</p> 
+        <h2>Automação e Código</h2> 
+        <p>Abaixo, o trecho de código em C++ (Arduino IDE) que gerencia a captura e o tratamento dos dados térmicos:</p> 
         <pre>
 // Requisição de temperatura ao sensor DS18B20
 sensors.requestTemperatures(); 
@@ -43,7 +110,7 @@ sensors.requestTemperatures();
 // Leitura do valor em Celsius
 float temp = sensors.getTempCByIndex(0);
 
-// Lógica de envio para a base de dados
+// Lógica de envio para a base de dados (planilha)
 if (temp != DEVICE_DISCONNECTED_C) {
     enviarDadosParaPlanilha(temp); 
 }
@@ -53,10 +120,25 @@ if (temp != DEVICE_DISCONNECTED_C) {
     <section>
         <h2>O Processo de Produção</h2>
         <p>
-            Durante a brassagem e fermentação, o monitoramento nos permitiu ajustar o sistema de arrefecimento 
-            sempre que a temperatura divergia do <i>setpoint</i> estabelecido para a levedura utilizada.
+            O monitoramento contínuo permitiu ajustes rápidos no sistema de arrefecimento durante a fermentação ativa, 
+            mantendo a temperatura dentro do <i>setpoint</i> ideal para a levedura selecionada.
         </p>
+
+        <div class="img-wrapper">
+            <img src="fototeste1.jpg" alt="Processo de produção da cerveja" class="img-tecnica">
+            <span class="legenda">Figura 1:Primeiro teste antes da soldagem da placa .</span>
+        </div>
+
+            <div class="img-wrapper">
+            <img src="fototeste2.jpg" alt="Processo de produção da cerveja" class="img-tecnica">
+            <span class="legenda">Figura 2: Medição da temperatura durante a produção .</span>
+        </div>
+        
     </section>
+
+    <footer style="text-align: center; color: #555; padding-bottom: 20px;">
+        <p>Desenvolvido para o Projeto Integrador de Engenharia.</p>
+    </footer>
 
 </body> 
 </html>
