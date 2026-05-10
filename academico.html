@@ -1,25 +1,62 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Detalhes Técnicos - Engenharia</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        /* Estilo rápido para a página de conteúdo */
-        body { display: block; padding: 40px; height: auto; text-align: left; }
-        .back-link { color: #f1c40f; text-decoration: none; display: block; margin-bottom: 20px; }
-        pre { background: #222; padding: 15px; border-radius: 5px; color: #00ff00; }
-    </style>
-</head>
-<body>
-    <a href="index.html" class="back-link">← Voltar ao Início</a>
-    <h1>Relatório Técnico de Produção</h1>
+<!DOCTYPE html> 
+<html lang="pt-br"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <title>Detalhes Técnicos - Engenharia</title> 
+    <link rel="stylesheet" href="style.css"> 
+    <style> 
+        /* Estilo rápido para a página de conteúdo */ 
+        body { display: block; padding: 40px; height: auto; text-align: left; background-color: #121212; color: #fff; } 
+        .back-link { color: #f1c40f; text-decoration: none; display: block; margin-bottom: 20px; font-weight: bold; } 
+        pre { background: #1a1a1a; padding: 15px; border-radius: 5px; color: #00ff00; border: 1px solid #333; overflow-x: auto; } 
+        section { margin-bottom: 40px; border-bottom: 1px solid #333; padding-bottom: 20px; }
+        h2 { color: #f1c40f; }
+        .highlight { color: #3498db; font-weight: bold; }
+    </style> 
+</head> 
+<body> 
+    <a href="index.html" class="back-link">← Voltar ao Início</a> 
+    
+    <h1>Relatório Técnico de Produção</h1> 
+
     <section>
-        <h2>Automação com ESP32</h2>
-        <p>Monitoramento de temperatura via sensor DS18B20.</p>
-        <!-- Aqui você pode colocar fotos do projeto ou trechos de código -->
-        <pre>// Exemplo de leitura do sensor
-float temp = sensors.getTempCByIndex(0);</pre>
+        <h2>Monitoramento e Coleta de Dados</h2>
+        <p>
+            O núcleo deste projeto de engenharia consiste em um sistema de telemetria para o processo de fermentação. 
+            Utilizamos um microcontrolador <span class="highlight">ESP32</span> para realizar a leitura constante da temperatura da cerveja 
+            durante as etapas críticas de produção.
+        </p>
+        <p>
+            Os dados coletados pelo sensor são enviados via Wi-Fi para uma planilha automatizada (ou banco de dados), 
+            permitindo o registro histórico e a análise do comportamento térmico do lote em tempo real. 
+            Isso garante a repetibilidade do processo e o controle de qualidade rigoroso exigido na produção industrial.
+        </p>
     </section>
-</body>
+
+    <section> 
+        <h2>Automação com ESP32</h2> 
+        <p>Abaixo, o trecho de código responsável pela captura da temperatura através do sensor digital DS18B20:</p> 
+        <pre>
+// Requisição de temperatura ao sensor DS18B20
+sensors.requestTemperatures(); 
+
+// Leitura do valor em Celsius
+float temp = sensors.getTempCByIndex(0);
+
+// Lógica de envio para a base de dados
+if (temp != DEVICE_DISCONNECTED_C) {
+    enviarDadosParaPlanilha(temp); 
+}
+        </pre> 
+    </section> 
+
+    <section>
+        <h2>O Processo de Produção</h2>
+        <p>
+            Durante a brassagem e fermentação, o monitoramento nos permitiu ajustar o sistema de arrefecimento 
+            sempre que a temperatura divergia do <i>setpoint</i> estabelecido para a levedura utilizada.
+        </p>
+    </section>
+
+</body> 
 </html>
